@@ -1,4 +1,8 @@
 terraform {
+  cloud {
+    organization = "kbl"
+    workspaces { name = "example-infra" }
+  }
   required_providers {
     aws = {
       source = "hashicorp/aws"
