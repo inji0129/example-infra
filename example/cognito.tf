@@ -20,7 +20,7 @@ resource "aws_cognito_user_pool" "pool" {
   }
 
   email_configuration {
-    reply_to_email_address = "no-reply@test.com"
+    reply_to_email_address = "siu9068@gmail.om"
   }
 
   deletion_protection = "INACTIVE"
