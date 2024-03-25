@@ -19,6 +19,11 @@ resource "aws_apigatewayv2_api" "this" {
 #  authorizer_id      = aws_apigatewayv2_authorizer.this.id
 #}
 
+resource "aws_apigatewayv2_stage" "this" {
+  api_id = aws_apigatewayv2_api.this.id
+  name   = "${var.project_name}-${var.stage}-stage"
+}
+
 resource "aws_apigatewayv2_authorizer" "this" {
   api_id                            = aws_apigatewayv2_api.this.id
   authorizer_type                   = "JWT"
