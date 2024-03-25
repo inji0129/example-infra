@@ -30,5 +30,5 @@ resource "aws_ssm_parameter" "cognito_domain_url" {
   name  = "${var.project_name}-${var.stage}-cognito-domain-url"
   description = "Cognito Domain URL for ${var.project_name} ${var.stage}"
   type  = "SecureString"
-  value = aws_cognito_user_pool_domain.main.domain
+  value = "https://${var.project_name}-${var.stage}-domain.auth.${var.aws_region}.amazoncognito.com"
 }
