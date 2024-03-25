@@ -32,3 +32,10 @@ resource "aws_ssm_parameter" "cognito_domain_url" {
   type  = "SecureString"
   value = "https://${var.project_name}-${var.stage}-domain.auth.${var.aws_region}.amazoncognito.com"
 }
+
+resource "aws_ssm_parameter" "serverless-bucket" {
+  name  = "${var.project_name}-${var.stage}-serverless-bucket"
+  description = "Serverless Deploy Bucket for ${var.project_name} ${var.stage}"
+  type  = "SecureString"
+  value = aws_s3_bucket.serverless.bucket
+}
