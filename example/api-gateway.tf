@@ -25,5 +25,4 @@ resource "aws_apigatewayv2_authorizer" "this" {
   }
   identity_sources                  = ["$request.header.Authorization"]
   name                              = "${var.project_name}-${var.stage}-authorizer"
-  authorizer_payload_format_version = "2.0"
 }
