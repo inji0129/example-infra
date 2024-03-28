@@ -1,6 +1,6 @@
 terraform {
   cloud {
-    organization = "kbl"
+    organization = "in_serverless"
     workspaces { name = "example-infra" }
   }
   required_providers {
