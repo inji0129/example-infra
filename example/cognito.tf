@@ -65,7 +65,7 @@ resource "aws_cognito_user_pool_client" "client" {
 #}
 
 resource "aws_cognito_user_pool_domain" "main" {
-  domain       = "${var.project_name}-${var.stage}-domain"
+  domain       = "${var.project_name}-${var.stage}-in-domain"
   user_pool_id = aws_cognito_user_pool.pool.id
 }
 
