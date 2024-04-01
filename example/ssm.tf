@@ -1,3 +1,10 @@
+resource "aws_ssm_parameter" "cognito_user_pool_id" {
+  name  = "${var.project_name}-${var.stage}-cognito-user-pool-id"
+  description = "Cognito User Pool ID for ${var.project_name} ${var.stage}"
+  type  = "SecureString"
+  value = aws_cognito_user_pool.pool.id
+}
+
 resource "aws_ssm_parameter" "api_gateway_id" {
   name  = "${var.project_name}-${var.stage}-api-gateway-id"
   description = "API Gateway ID for ${var.project_name} ${var.stage}"
