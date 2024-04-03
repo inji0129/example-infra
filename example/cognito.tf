@@ -44,26 +44,31 @@ resource "aws_cognito_user_pool_client" "client" {
   allowed_oauth_flows = ["code"]
   allowed_oauth_flows_user_pool_client = true
   allowed_oauth_scopes = ["email", "openid", "aws.cognito.signin.user.admin"]
-  supported_identity_providers = ["COGNITO"]
-#  supported_identity_providers = ["COGNITO","Google"]
+#  supported_identity_providers = ["COGNITO"]
+  supported_identity_providers = ["COGNITO","Google"]
 }
 
-#resource "aws_cognito_identity_provider" "google_provider" {
-#  user_pool_id  = aws_cognito_user_pool.pool.id
-#  provider_name = "Google"
-#  provider_type = "Google"
-#
-#  provider_details = {
-#    authorize_scopes = "email"
-#    client_id        = "your client_id"
-#    client_secret    = "your client_secret"
-#  }
-#
-#  attribute_mapping = {
-#    email    = "email"
-#    username = "sub"
-#  }
-#}
+
+/*access 설정 후 variable 지정*/
+/*https://console.cloud.google.com/welcome?organizationId=0&orgonly=true&supportedpurview=project,organizationId,folder*/
+/*google_client_id, google_client_secret*/
+/**/
+resource "aws_cognito_identity_provider" "google_provider" {
+  user_pool_id  = aws_cognito_user_pool.pool.id
+  provider_name = "Google"
+  provider_type = "Google"
+
+  provider_details = {
+    authorize_scopes = "email"
+    client_id        = "your client_id"
+    client_secret    = "your client_secret"
+  }
+
+  attribute_mapping = {
+    email    = "email"
+    username = "sub"
+  }
+}
 
 resource "aws_cognito_user_pool_domain" "main" {
   domain       = "${var.project_name}-${var.stage}-domain"
