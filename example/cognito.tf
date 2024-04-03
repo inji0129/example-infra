@@ -60,8 +60,8 @@ resource "aws_cognito_identity_provider" "google_provider" {
 
   provider_details = {
     authorize_scopes = "email"
-    client_id        = "your client_id"
-    client_secret    = "your client_secret"
+    client_id        = var.google_client_id
+    client_secret    = var.google_client_secret
   }
 
   attribute_mapping = {
